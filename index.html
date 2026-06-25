@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🍳 Jojo的专属食堂</title>
+
+<style>
+
+body{
+    font-family: "Microsoft YaHei", sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff8f0;
+    color: #333;
+}
+
+.banner{
+    text-align:center;
+    color:#888;
+    margin-bottom:10px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    line-height:1.8;
+    margin-bottom:30px;
+    color:#666;
+}
+
+.category{
+    background:white;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.08);
+}
+
+.category h2{
+    margin-top:0;
+}
+
+.menu-item{
+    margin:8px 0;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:10px;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    background:#ffb74d;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+#result{
+    margin-top:20px;
+    padding:15px;
+    background:white;
+    border-radius:10px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    color:#999;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="banner">
+🏠 Colin & Jojo's Kitchen
+</div>
+
+<h1>🍳 Jojo的专属食堂</h1>
+
+<div class="subtitle">
+
+欢迎回来，Jojo ❤️<br>
+
+今日主厨：Colin 👨‍🍳<br>
+
+<span id="daysOpen"></span>
+
+</div>
+
+<div class="category">
+<h2>🥩 肉菜</h2>
+
+<div class="menu-item"><label><input type="checkbox" value="泡椒鸡杂"> 泡椒鸡杂</label></div>
+<div class="menu-item"><label><input type="checkbox" value="辣子鸡丁"> 辣子鸡丁</label></div>
+<div class="menu-item"><label><input type="checkbox" value="钵钵鸡"> 钵钵鸡</label></div>
+<div class="menu-item"><label><input type="checkbox" value="青椒肉丝"> 青椒肉丝</label></div>
+<div class="menu-item"><label><input type="checkbox" value="肉末茄子"> 肉末茄子</label></div>
+<div class="menu-item"><label><input type="checkbox" value="黄焖鸡"> 黄焖鸡</label></div>
+<div class="menu-item"><label><input type="checkbox" value="辣白菜炒五花肉"> 辣白菜炒五花肉</label></div>
+<div class="menu-item"><label><input type="checkbox" value="胡萝卜炒肉"> 胡萝卜炒肉</label></div>
+<div class="menu-item"><label><input type="checkbox" value="烤鸡腿"> 烤鸡腿</label></div>
+<div class="menu-item"><label><input type="checkbox" value="卤味"> 卤味</label></div>
+
+</div>
+
+<div class="category">
+<h2>🦐 海鲜</h2>
+
+<div class="menu-item"><label><input type="checkbox" value="油焖大虾"> 油焖大虾</label></div>
+<div class="menu-item"><label><input type="checkbox" value="蒜蓉粉丝虾"> 蒜蓉粉丝虾</label></div>
+<div class="menu-item"><label><input type="checkbox" value="香煎鲑鱼"> 香煎鲑鱼</label></div>
+
+</div>
+
+<div class="category">
+<h2>🥬 素菜</h2>
+
+<div class="menu-item"><label><input type="checkbox" value="蒜蓉西兰花"> 蒜蓉西兰花</label></div>
+<div class="menu-item"><label><input type="checkbox" value="炒杏鲍菇"> 炒杏鲍菇</label></div>
+<div class="menu-item"><label><input type="checkbox" value="炒小青菜"> 炒小青菜</label></div>
+<div class="menu-item"><label><input type="checkbox" value="蒸蛋"> 蒸蛋</label></div>
+
+</div>
+
+<div class="category">
+<h2>🍜 主食</h2>
+
+<div class="menu-item"><label><input type="checkbox" value="火锅"> 火锅</label></div>
+<div class="menu-item"><label><input type="checkbox" value="饺子"> 饺子</label></div>
+<div class="menu-item"><label><input type="checkbox" value="三鲜炒乌冬"> 三鲜炒乌冬</label></div>
+<div class="menu-item"><label><input type="checkbox" value="汤咖喱"> 汤咖喱</label></div>
+
+</div>
+
+<div class="category">
+<h2>🍲 汤类</h2>
+
+<div class="menu-item"><label><input type="checkbox" value="番茄玉米排骨汤"> 番茄玉米排骨汤</label></div>
+<div class="menu-item"><label><input type="checkbox" value="番茄鸡蛋汤"> 番茄鸡蛋汤</label></div>
+<div class="menu-item"><label><input type="checkbox" value="菠菜鸡蛋汤"> 菠菜鸡蛋汤</label></div>
+<div class="menu-item"><label><input type="checkbox" value="白萝卜炖排骨"> 白萝卜炖排骨</label></div>
+<div class="menu-item"><label><input type="checkbox" value="香菇鸡腿汤"> 香菇鸡腿汤</label></div>
+
+</div>
+
+<h2>⭐ 今日最想吃</h2>
+
+<select id="favorite">
+
+<option>泡椒鸡杂</option>
+<option>辣子鸡丁</option>
+<option>钵钵鸡</option>
+<option>青椒肉丝</option>
+<option>肉末茄子</option>
+<option>黄焖鸡</option>
+<option>辣白菜炒五花肉</option>
+<option>胡萝卜炒肉</option>
+<option>烤鸡腿</option>
+<option>卤味</option>
+<option>油焖大虾</option>
+<option>蒜蓉粉丝虾</option>
+<option>香煎鲑鱼</option>
+
+</select>
+
+<h2>💌 给主厨留言</h2>
+
+<textarea
+id="note"
+placeholder="例如：今天想喝热汤 ❤️"></textarea>
+
+<button onclick="submitOrder()">
+🍳 提交给主厨 Colin
+</button>
+
+<div id="result"></div>
+
+<div class="footer">
+❤️ Made with love by Colin for Jojo ❤️
+</div>
+
+<script>
+
+const startDate =
+new Date("2025-08-27");
+
+const today =
+new Date();
+
+const diff =
+Math.floor(
+(today - startDate)
+/
+(1000*60*60*24)
+);
+
+document.getElementById("daysOpen")
+.innerHTML =
+"❤️ 已营业 " + diff + " 天";
+
+async function submitOrder(){
+
+    const checked =
+    document.querySelectorAll(
+        'input[type="checkbox"]:checked'
+    );
+
+    let menus = [];
+
+    checked.forEach(item=>{
+        menus.push(item.value);
+    });
+
+    if(menus.length===0){
+
+        alert("至少选一道菜哦 😋");
+
+        return;
+    }
+
+    const favorite =
+    document.getElementById("favorite").value;
+
+    const note =
+    document.getElementById("note").value;
+
+    const order = {
+
+        favorite: favorite,
+        menus: menus,
+        note: note
+
+    };
+
+    try{
+
+        await fetch(
+        "https://script.google.com/macros/s/AKfycbzYSLKeKtRUOuxmwiPKT0kTbHY8tq4GJFyRFYLwUk02HEOROXewF9tHT9_pHc_YaQLg/exec",
+        {
+            method:"POST",
+            mode:"no-cors",
+            body:JSON.stringify(order)
+        });
+
+        document.getElementById("result").innerHTML=
+        "<h3>❤️ 订单已提交</h3>" +
+        "<p>Jojo点单成功！</p>" +
+        "<p>主厨 Colin 已收到订单 👨‍🍳</p>" +
+        "<p>今晚准备开工做饭啦 🍳</p>" +
+        "<p>🥰 祝用餐愉快</p>";
+
+    }
+
+    catch(error){
+
+        document.getElementById("result").innerHTML=
+        "<h3>❌ 提交失败</h3>" +
+        "<p>"+error+"</p>";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
