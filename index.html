@@ -261,24 +261,50 @@ async function submitOrder(){
 
     };
 
-    try{
+try{
 
-        await fetch(
-        "https://script.google.com/macros/s/AKfycbzYSLKeKtRUOuxmwiPKT0kTbHY8tq4GJFyRFYLwUk02HEOROXewF9tHT9_pHc_YaQLg/exec",
-        {
-            method:"POST",
-            mode:"no-cors",
-            body:JSON.stringify(order)
-        });
+    const btn =
+    document.querySelector("button");
 
-        document.getElementById("result").innerHTML=
-        "<h3>❤️ 订单已提交</h3>" +
-        "<p>Jojo点单成功！</p>" +
-        "<p>主厨 Colin 已收到订单 👨‍🍳</p>" +
-        "<p>今晚准备开工做饭啦 🍳</p>" +
-        "<p>🥰 祝用餐愉快</p>";
+    btn.disabled = true;
 
-    }
+    btn.innerHTML =
+    "👨‍🍳 主厨正在接单...";
+
+    document.getElementById("result").innerHTML =
+    `
+    <p style="text-align:center;font-size:18px;">
+    🍳 正在通知主厨 Colin...
+    </p>
+    `;
+
+    fetch(
+    "https://script.google.com/macros/s/AKfycbzYSLKeKtRUOuxmwiPKT0kTbHY8tq4GJFyRFYLwUk02HEOROXewF9tHT9_pHc_YaQLg/exec",
+    {
+        method:"POST",
+        mode:"no-cors",
+        body:JSON.stringify(order)
+    });
+
+    setTimeout(()=>{
+
+        document.getElementById("result").innerHTML =
+        `
+        <h3>❤️ 订单已提交</h3>
+
+        <p>主厨 Colin 已收到订单 👨‍🍳</p>
+
+        <p>今晚准备开工做饭啦 🍳</p>
+
+        <p>🥰 Jojo 请耐心等待开饭~</p>
+        `;
+
+        btn.innerHTML =
+        "❤️ 已提交";
+
+    },1200);
+
+}
 
     catch(error){
 
